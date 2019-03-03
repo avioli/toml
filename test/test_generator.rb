@@ -14,6 +14,7 @@ class TestGenerator < MiniTest::Test
       "false" => false,
       "string" => "hi",
       "array" => [[1], [2], [3]],
+      "nil_array" => [],
       "table_array" => [
         {
           "name" => "first"

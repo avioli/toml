@@ -105,4 +105,15 @@ class TestParser < MiniTest::Test
   def test_inline_comment
     assert_equal "a line", @doc["comments"]["on"]
   end
+
+  def test_generator
+    doc = @doc.clone
+    body = TOML::Generator.new(doc).body
+    doc_parsed = TOML::Parser.new(body).parsed
+    
+    refute doc_parsed.length > doc.length, "Parsed doc has more items than we started with."
+    doc.each do |key, val|
+      assert_equal val, doc_parsed[key]
+    end
+  end
 end

@@ -52,7 +52,7 @@ class Hash
 end
 class Array
   def to_toml(path = "")
-    unless self.map(&:class).uniq.length == 1
+    unless self.length == 0 || self.map(&:class).uniq.length == 1
       raise "All array values must be the same type"
     end
 
