@@ -56,7 +56,7 @@ class TestGenerator < MiniTest::Test
     # Extracting dates since Ruby's DateTime equality testing sucks.
     original_date = doc.delete "date"
     parsed_date = doc_parsed.delete "date"
-    assert_equal original_date.to_time.to_s, parsed_date.to_time.to_s
+    assert_equal original_date.to_time.utc.to_s, parsed_date.to_time.utc.to_s
 
     refute doc_parsed.length > doc.length, "Parsed doc has more items than we started with."
     doc.each do |key, val|
